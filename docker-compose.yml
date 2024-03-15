@@ -1,5 +1,15 @@
 version: '3'
 services:
+  discovery:
+    build:
+      context: discovery
+      dockerfile: Dockerfile
+    image: acm-discovery:1.0
+    ports:
+      - "8761:8761"
+    restart: always
+    container_name: discovery
+
   neo4j:
     image: neo4j:latest
     environment:
