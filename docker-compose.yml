@@ -10,6 +10,16 @@ services:
     restart: always
     container_name: discovery
 
+  config-server:
+    build:
+      context: config-server
+      dockerfile: Dockerfile
+    image: acm-config-server:1.0
+    ports:
+      - "8001:8001"
+    restart: always
+    container_name: config-server
+
   neo4j:
     image: neo4j:latest
     environment:
