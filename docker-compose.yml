@@ -1,6 +1,5 @@
 version: '3'
 services:
-# blabla
   neo4j:
     image: neo4j:latest
     environment:
