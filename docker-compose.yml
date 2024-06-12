@@ -56,5 +56,15 @@ services:
     restart: always
     container_name: device-monitoring-service
 
+  stats-service:
+    build:
+      context: stats-service
+      dockerfile: Dockerfile
+    image: acm-stats-service:1.0
+    ports:
+      - "8085:8085"
+    restart: always
+    container_name: stats-service
+
 networks:
   default:
