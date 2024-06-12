@@ -33,7 +33,7 @@ services:
     restart: always
     container_name: config-server
 
-  postgres:
+  postgres-acm:
     image: postgres:latest
     environment:
       POSTGRES_USER: root
@@ -44,6 +44,17 @@ services:
       - "5432:5432"
     volumes:
       - $HOME/postgres/data:/var/lib/postgresql/data
+    container_name: postgres-acm
+
+  device-monitoring-service:
+    build:
+      context: device-monitoring-service
+      dockerfile: Dockerfile
+    image: acm-device-monitoring:1.0
+    ports:
+      - "8084:8084"
+    restart: always
+    container_name: device-monitoring-service
 
 networks:
   default:
