@@ -53,6 +53,9 @@ services:
     volumes:
       - $HOME/mongodb/data:/data/db
     container_name: mongodb-acm
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
 
   device-monitoring-service:
     build:
