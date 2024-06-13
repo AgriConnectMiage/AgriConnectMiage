@@ -46,6 +46,14 @@ services:
       - $HOME/postgres/data:/var/lib/postgresql/data
     container_name: postgres-acm
 
+  mongodb-acm:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - $HOME/mongodb/data:/data/db
+    container_name: mongodb-acm
+
   device-monitoring-service:
     build:
       context: device-monitoring-service
