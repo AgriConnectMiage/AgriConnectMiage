@@ -12,6 +12,7 @@ services:
     depends_on:
       - discovery
       - config-server
+      - authentication-service
 
   discovery:
     build:
@@ -76,6 +77,19 @@ services:
       - "8085:8085"
     restart: always
     container_name: stats-service
+
+  authentication-service:
+    build:
+      context: authentication-service
+      dockerfile: Dockerfile
+    image: acm-authentication-service:1.0
+    ports:
+      - "8086:8086"
+    restart: always
+    container_name: authentication-service
+    depends_on:
+      - postgres-acm
+      - config-server
 
 networks:
   default:
