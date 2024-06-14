@@ -46,16 +46,16 @@ services:
       - $HOME/postgres/data:/var/lib/postgresql/data
     container_name: postgres-acm
 
-  mongodb-acm:
-    image: mongo:latest
+  neo4j-acm:
+    image: neo4j:latest
     ports:
-      - "27017:27017"
+      - "7474:7474"
+      - "7687:7687"
     volumes:
-      - $HOME/mongodb/data:/data/db
-    container_name: mongodb-acm
+      - $HOME/neo4j/data:/data
+    container_name: neo4j-acm
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: password
+      NEO4J_AUTH: neo4j/password
 
   device-monitoring-service:
     build:
