@@ -91,5 +91,17 @@ services:
       - postgres-acm
       - config-server
 
+  management-service:
+    build:
+      context: management-service
+      dockerfile: Dockerfile
+    image: acm-management-service:1.0
+    ports:
+      - "8081:8081"
+    restart: always
+    container_name: management-service
+    depends_on:
+      - config-server
+
 networks:
   default:
